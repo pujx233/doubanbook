@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/index/index",
+    "pages/sort/sort",
+    "pages/logs/logs",
+    "pages/about/about",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "南哪儿豆读",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#989898",
+    "selectedColor": "#2b2b2b",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/nav_index.png",
+        "selectedIconPath": "images/nav_index_on.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "images/nav_sort.png",
+        "selectedIconPath": "images/nav_sort_on.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于",
+        "iconPath": "images/nav_about.png",
+        "selectedIconPath": "images/nav_about_on.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
