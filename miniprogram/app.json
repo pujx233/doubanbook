@@ -2,10 +2,10 @@
   "pages": [
     "pages/start/start",
     "pages/index/index",
-    "pages/sort/sort",
-    "pages/logs/logs",
-    "pages/about/about",
-    "pages/detail/detail"
+    "pages/rank/rank",
+    "pages/me/me",
+    "pages/detail/detail",
+    "pages/list/list"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -27,14 +27,14 @@
         "selectedIconPath": "images/nav_index_on.png"
       },
       {
-        "pagePath": "pages/sort/sort",
-        "text": "分类",
+        "pagePath": "pages/rank/rank",
+        "text": "排行",
         "iconPath": "images/nav_sort.png",
         "selectedIconPath": "images/nav_sort_on.png"
       },
       {
-        "pagePath": "pages/about/about",
-        "text": "关于",
+        "pagePath": "pages/me/me",
+        "text": "我的",
         "iconPath": "images/nav_about.png",
         "selectedIconPath": "images/nav_about_on.png"
       }

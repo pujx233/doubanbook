@@ -210,6 +210,15 @@ page{
   opacity: 1;
 }
 
+.star-img{
+  width: 130rpx;
+  height: 24rpx;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 5rpx;
+}
 /**分类**/
 .tags-box{
   padding: 0 0 20rpx;
@@ -312,9 +321,7 @@ page{
 .ibox-list-star{
   margin:12rpx 0 14rpx;
 }
-.ibox-list-tags{
 
-}
 
 .ibox-list-tags text{
   position: relative;
