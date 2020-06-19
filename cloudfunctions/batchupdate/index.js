@@ -1,6 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-
+var db = cloud.database()
 cloud.init({
   env: 'nju-douban-ni8r0',
   traceUser: true

@@ -3,7 +3,7 @@ cloud.init({
   env: 'nju-douban-ni8r0',
   traceUser: true
 })
-const db = cloud.database()
+var db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
