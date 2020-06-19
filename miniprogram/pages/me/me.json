@@ -1,6 +1,9 @@
 {
-  "navigationBarTitleText":"我的",
+  "navigationBarTitleText": "我的",
   "usingComponents": {
-    "van-button":"../../vant/button/index"
-  }
+    "van-card": "../../vant/card",
+    "van-tag": "../../vant/tag",
+    "van-rate": "../../vant/rate"
+  },
+  "enablePullDownRefresh": true
 }

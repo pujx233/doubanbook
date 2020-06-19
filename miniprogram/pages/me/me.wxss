@@ -1,4 +1,71 @@
-/* pages/me.wxss */
+.tags {
+  display: flex;
+}
+
+.tag {
+  display: flex;
+  margin: 20rpx 20rpx 20rpx 0;
+}
+
+.rate {
+  display: flex;
+}
+
+.rate-text {
+  font-size: 24rpx;
+}
+
+.page-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  padding-top: 20px;
+}
+.item .item-wrap van-card .van-card {
+  background-color: #fff;
+}
+
+.item {
+  position: relative;
+  width: 100vw;
+  border-bottom: 2rpx solid #E9E9E9;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 999;
+}
+.item movable-area {
+  height: 200rpx;
+  width: calc(100vw - 200rpx);
+}
+.item movable-view {
+  height: 200rpx;
+  width: 100vw;
+  background: #fff;
+  z-index: 999;
+}
+.item-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8rpx 0 20rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0; 
+  width: 200rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  line-height: 200rpx;
+  z-index: 1;
+  background: #E66671;
+  text-align: center;
+}
 .classifybtn{
   position: fixed;
   right: 10px;

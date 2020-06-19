@@ -1,12 +1,39 @@
-<navigator url="../scanCode/scanCode"><view class="classifybtn b">扫码</view></navigator>
-
-<view wx:for="{{booklist}}">
-  <van-card price="{{item.price}}" desc="{{item.author}}" title="{{item.title}}" thumb="http://www.books88.com/Books_Pic/20080508/L9787507828313.jpg">
-    <view slot="tags">
-      <van-tag type="primary">{{item.keyword}}</van-tag>
-    </view>
-    <view slot="footer">
-      <van-button data-id="{{item._id}}" size="small" type='primary' plain bind:click='viewItem'>详情</van-button>
-    </view>
-  </van-card>
-</view>
+<wxs module="dateFr" src="../../filter.wxs"></wxs>
+<block wx:if="{{bookList.length > 0}}">
+  <view class="item" wx:for="{{bookList}}" wx:key="unique">
+    <movable-area>
+      <movable-view out-of-bounds="true" direction="horizontal" x="{{item.xmove}}" data-index="{{index}}" animation="true" bindtouchstart="handleTouchStart"
+          bindtouchend="handleTouchEnd"
+          bindchange="handleMovableChange">
+        <view class="item-wrap" bindtap="gotoDetail" data-item="{{item}}">
+          <van-card price="{{item.price}}" desc="{{item.author}} / {{dateFr.formatDate(item.create_time)}} / {{item.publisher}}" title="{{item.title}}" thumb="{{item.image}}">
+            <view slot="tags" class="rate">
+              <van-rate readonly value="{{item.rate / 2}}" size="{{ 14 }}" />
+              <text class="rate-text">{{item.rate}}</text>
+            </view>
+          </van-card>
+        </view>
+      </movable-view>
+      <view class="line"></view>
+    </movable-area>
+    <view class="delete-btn" bindtap="delete" data-id="{{item._id}}" data-index="{{index}}">删除</view>
+  </view>
+  <view wx:if="{{bookList.length >= 10}}">
+    <block wx:if="{{showMore}}">
+      <view class="page-loading">
+        <text>加载中</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="page-loading">
+        <text>没有更多内容</text>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:else>
+  <view class="page-loading">
+    <text>请扫码加书或下拉刷新</text>
+  </view>
+  <navigator url="../scanCode/scanCode"><view class="classifybtn b">扫码</view></navigator>
+</block>
