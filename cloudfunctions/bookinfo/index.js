@@ -1,5 +1,8 @@
 const cloud = require('wx-server-sdk')
-cloud.init({})
+cloud.init({
+  env: 'nju-douban-ni8r0',
+  traceUser: true
+})
 const db = cloud.database()
 const _ = db.command
 

@@ -5,7 +5,8 @@ Page({
   data:{
       value:"",
       bookList:null,
-      count:0
+      count:0,
+      totalRecord: 0, //图书总数
   },
   changeValue:function(e){
       this.setData({value:e.detail.value});
@@ -78,6 +79,7 @@ Page({
     },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    
   },
   onReady:function(){
     // 页面渲染完成

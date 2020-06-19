@@ -5,7 +5,8 @@ var star = require("../../utils/star");
 Page({
     data:{
         bookList:null,
-        count:0
+        count:0,
+        totalRecord: 0, //图书总数
     },
     upper: function(e) {
         console.log("已到顶部");

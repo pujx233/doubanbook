@@ -2,44 +2,39 @@
   height: 100%;
 }
 
-.list .item {
+.item {
   display: flex;
   padding: 20rpx 40rpx;
   border-bottom: 1rpx solid #eee;
   cursor: pointer;
 }
 
-.list .item .poster {
+.item .poster {
   width: 128rpx;
   height: 168rpx;
   margin-right: 20rpx;
 }
 
-.list .item .meta {
+.item .meta {
   flex: 1;
 }
 
-.list .item .meta .title,
-.list .item .meta .sub-title {
+.item .meta .title,
+.item .meta .sub-title {
   display: block;
   margin-bottom: 15rpx;
 }
 
-.list .item .meta .title {
+.item .meta .title {
   font-size: 32rpx;
 }
 
-.list .item .meta .sub-title {
-  font-size: 22rpx;
-  color: #c0c0c0;
-}
-
-.list .item .meta .artists {
+.item .meta .artists {
   font-size: 24rpx;
   color: #999;
 }
 
-.list .item .rating text {
+.item .rating text {
   display: inline-block;
   width: 40rpx;
   font-size: 28rpx;
@@ -51,19 +46,19 @@
   border-radius: 20rpx;
 }
 
-.list .tips {
+.tips {
   font-size: 28rpx;
   text-align: center;
   padding: 50rpx;
   color: #ccc;
 }
 
-.list .tips image,
-.list .tips text {
+.tips image,
+.tips text {
   vertical-align: middle;
 }
 
-.list .tips image {
+.tips image {
   width: 40rpx;
   height: 40rpx;
   margin-right: 20rpx;
@@ -81,4 +76,10 @@
   color: #999;
   font-size: 38rpx;
   text-align: center;
+}
+.comment{
+  padding: 15rpx 0;
+  color: rgb(18, 13, 13);
+  font-family: "楷体";
+ 
 }

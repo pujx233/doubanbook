@@ -1,7 +1,21 @@
-<import src="../component/ranking/book-list"/>
-<view class="container">
-  <!-- <view class="header">
-    <text>{{ subtitle }}</text>
-  </view> -->
-  <template is="book-list" data="{{ movies, loading, hasMore }}"/>
+<!--pages/rank/rank.wxml-->
+<view class="container"> 
+  <block wx:for="{{dataList}}" wx:key="item">
+    <navigator url="../detail/detail?id={{ item.isbn }}">
+      <view class='item'>
+        <image class = "poster" src='cloud://nju-douban-ni8r0.6e6a-nju-douban-ni8r0-1302437256/top250/{{item.rank}}.jpg'>
+        </image>
+        <view class="meta">
+          <text class="title">{{ item.name }}</text>
+          <view class="artists">作者：{{item.author}}</view>
+          <text class="title"></text>
+          <view class="comment">"{{item.comment}}"</view>
+        </view>
+        <view class="rating">
+          <text>{{ item.rate}}</text>
+        </view>
+      </view>
+    </navigator>
+  </block>
+
 </view>
