@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText":"关于"
+  "navigationBarTitleText":"我的",
+  "usingComponents": {
+    "van-button":"../../vant/button/index"
+  }
 }

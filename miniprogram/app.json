@@ -5,7 +5,9 @@
     "pages/rank/rank",
     "pages/me/me",
     "pages/detail/detail",
-    "pages/list/list"
+    "pages/scanCode/scanCode",
+    "pages/search/search",
+    "pages/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "dark",

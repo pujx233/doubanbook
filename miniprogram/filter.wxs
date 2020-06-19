@@ -1,0 +1,20 @@
+
+function formatDate(unixtime) {
+  var dateTime = getDate(unixtime)
+  var year = dateTime.getFullYear();
+  var month = dateTime.getMonth() + 1;
+  var day = dateTime.getDate();
+  var hour = dateTime.getHours();
+  var minute = dateTime.getMinutes();
+  var second = dateTime.getSeconds();
+  var now = getDate();
+  var now_new = Date.parse(now.toDateString());
+  var milliseconds = now_new - dateTime;
+  var timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+  return year
+}
+
+module.exports = {
+  formatDate: formatDate
+}
+

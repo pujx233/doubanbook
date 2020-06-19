@@ -1,12 +1,29 @@
 // pages/about/about.js
+const db = wx.cloud.database({});//首先获得数据库实例
 Page({
-  data:{
-    abouth1:"豆瓣图书小程序",
-    version:"v1.0.0"
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    booklist: [],
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    db.collection('mybook').get({
+      success: res =>{
+        console.log(res.data[0]);
+        this.setData({
+          booklist: res.data
+        })
+      }
+    })
   },
+
   onReady:function(){
     // 页面渲染完成
   },

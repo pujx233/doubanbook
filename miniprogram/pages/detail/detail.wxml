@@ -24,7 +24,7 @@
                     <view class="detail-star">{{bookInfo.rating.average}}</view>
                     <image class="detail-star-img" src="{{bookInfo.rating.block}}"></image>
                 </view>
-
+        
             </view>
 
         </view>

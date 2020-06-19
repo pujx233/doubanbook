@@ -26,6 +26,7 @@ Page({
           that.setData({bookInfo:res.data});
       });
   },
+  
   onReady:function(){
     // 页面渲染完成
    wx.hideToast();
