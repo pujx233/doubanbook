@@ -1,5 +1,5 @@
 <view class="welcome">
-    <image animation="{{animationData}}" class = "" src="../../images/read.ico"></image>
+    <image animation="{{animationData}}" class = "" src="../../images/read.jpg"></image>
      <view animation="{{animationData}}" class="title">南哪儿豆读</view>
      <view animation="{{animationData}}" class="slogan">一起重拾阅读的价值</view>
      <view class="f9 n mb5">数据版权来源：豆瓣读书</view>
