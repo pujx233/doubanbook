@@ -39,4 +39,5 @@
     <text>请扫码加书或下拉刷新</text>
   </view>
 </block>
-<view bindtap="scan" class="classifybtn b">扫码</view>
+<view bindtap="scan" class="classifybtn b"></view>
+<image class="col" src="../../images/saom.png"></image>

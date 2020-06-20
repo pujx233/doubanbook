@@ -34,4 +34,6 @@
         </view>
     </scroll-view>
 </view>
-<view bindtap="collect" data-id="{{bookInfo.isbn13}}" class="classifybtn b">收藏</view>
+<view bindtap="collect" data-id="{{bookInfo.isbn13}}" class="classifybtn b"></view>
+
+<image class="col" src="../../images/col.jpg"></image>

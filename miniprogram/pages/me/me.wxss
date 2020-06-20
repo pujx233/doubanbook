@@ -70,21 +70,9 @@
   position: fixed;
   right: 10px;
   bottom:50px;
-  z-index: 999;
+  z-index: 1001;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #666;
-  text-align: center;
-  line-height: 50px;
-  font-size: .8rem;
-  color: #fff;
-  border:5px solid;
-  border-left-color:#ff851b;
-  border-right-color: #0074d9;
-  border-top-color: yellow;
-  border-bottom-color: green; 
-  background-color: rgba(0,0,0,.5);
 }
 
 
@@ -176,4 +164,13 @@
   background-size: cover;
   margin-right: 5rpx;
   
+}
+.col{
+  position: fixed;
+  right: 10px;
+  bottom:50px;
+  z-index: 1000;
+  width: 70px;
+  height: 70px;
+
 }
