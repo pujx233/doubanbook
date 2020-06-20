@@ -35,5 +35,5 @@
   <view class="page-loading">
     <text>请扫码加书或下拉刷新</text>
   </view>
-  <navigator url="../scanCode/scanCode"><view class="classifybtn b">扫码</view></navigator>
 </block>
+<navigator url="../scanCode/scanCode"><view class="classifybtn b">扫码</view></navigator>

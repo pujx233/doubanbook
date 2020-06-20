@@ -1,52 +1,55 @@
-//index.js
-//获取应用实例
-var app = getApp()
+// pages/scanCode/scanCode.js
 Page({
-  data: {},
-  //事件处理函数
-  bindViewTap: function() {
-    var that = this
-    wx.scanCode({
-      success: (res) => {
-        wx.showLoading({});
-        wx.request({
-          url: 'https://api.jisuapi.com/isbn/query?appkey=44898c9b893f35ce&isbn=',
-          data: {
-            barcode: res.result
-          },
-          success: function(res) {
-            wx.hideLoading()
-            console.log(res.data)
-            that.setData({
-              barcodeData:res.data.data
-            });
-          }
-        })
-      }
-    })
+  data: {
   },
 
-  bindViewInput: function (res) {
-    var that = this
-    this.setData({
-      inputTxt: ''
-    }),
-      wx.request({
-        url: 'https://api.jisuapi.com/isbn/query?appkey=44898c9b893f35ce&isbn=',
-        data: {
-          barcode: res.detail.value
-        },
-        success: function (res) {
-          wx.hideLoading()
-          console.log(res.data)
-          that.setData({
-            barcodeData: res.data.data
-          });
-        }
-      })
-  },
-  
-  onLoad: function () {
-    console.log('onLoad')    
+  scanCode: function (event) {
+    console.log(1)
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      onlyFromCamera: true,
+      scanType: ['barCode'],
+      success: res => {
+        console.log(res.result)
+
+        //
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'bookinfo',
+          // 传递给云函数的参数
+          data: {
+            isbn: res.result
+          },
+          success: res => {
+            //  console.log(res)
+            //进一步的处理
+            var bookString = res.result;
+            console.log('jojo',bookString)
+
+
+            //云数据库初始化
+            const db = wx.cloud.database({});
+            const book = db.collection('mybooks')
+
+            db.collection('mybooks').add({
+              // data 字段表示需新增的 JSON 数据
+              data: JSON.parse(bookString)
+
+            }).then(res => {
+              console.log(res)
+            }).catch(err => {
+              console.log(err)
+            })
+          },
+          fail: err => {
+            console.error(err)
+          }
+        })
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
   }
+
 })

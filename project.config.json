@@ -28,6 +28,7 @@
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"compileType": "miniprogram",
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
