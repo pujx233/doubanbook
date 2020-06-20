@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "van-button": "../../vant/button",
-    "van-notify": "../../vant/notify"
-  }
-}
