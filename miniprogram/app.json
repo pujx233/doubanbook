@@ -5,7 +5,6 @@
     "pages/rank/rank",
     "pages/me/me",
     "pages/detail/detail",
-    "pages/scanCode/scanCode",
     "pages/search/search",
     "pages/comment/comment"
   ],

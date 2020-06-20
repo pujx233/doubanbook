@@ -2,9 +2,9 @@
   "navigationBarTitleText": "我的",
   
     "usingComponents": {
-      "van-card": "../../vant/card/index",
-      "van-tag": "../../vant/tag",
-      "van-rate": "../../vant/rate"
+      "van-card": "../../miniprogram_npm/vant-weapp/card",
+      "van-tag": "../../miniprogram_npm/vant-weapp/tag",
+      "van-rate": "../../miniprogram_npm/vant-weapp/rate"
     },
   
   "enablePullDownRefresh": true

@@ -1,10 +1,18 @@
-const rp = require('request-promise')
+// 云函数入口文件
+const cloud = require('wx-server-sdk')
+cloud.init()
 
+var rp = require('request-promise')
+
+// 云函数入口函数
 exports.main = async (event, context) => {
-  const isbn = event.isbn
-  const result = await rp(`https://douban-api.now.sh/v2/book/isbn/${isbn}`)
-  .then(res => {
-    return JSON.parse(res)
-  }).catch(err => console.log(err))
-  return result
+  var res = rp('https://api.douban.com/v2/book/isbn/' + event.isbn)
+  console.log(res)
+  .then(html => {
+    return eval('(' + html + ')');
+  }).catch(err => {
+    console.log(err)
+  })
+
+  return res;
 }

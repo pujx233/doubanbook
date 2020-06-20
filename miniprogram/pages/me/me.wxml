@@ -1,21 +1,24 @@
 <wxs module="dateFr" src="../../filter.wxs"></wxs>
 <block wx:if="{{bookList.length > 0}}">
   <view class="item" wx:for="{{bookList}}" wx:key="unique">
+  <navigator  url="../detail/detail?id={{item.id}}">
     <movable-area>
       <movable-view out-of-bounds="true" direction="horizontal" x="{{item.xmove}}" data-index="{{index}}" animation="true" bindtouchstart="handleTouchStart"
           bindtouchend="handleTouchEnd"
           bindchange="handleMovableChange">
-        <view class="item-wrap" bindtap="gotoDetail" data-item="{{item}}">
+        
           <van-card price="{{item.price}}" desc="{{item.author}} / {{dateFr.formatDate(item.create_time)}} / {{item.publisher}}" title="{{item.title}}" thumb="{{item.image}}">
             <view slot="tags" class="rate">
-              <van-rate readonly value="{{item.rate / 2}}" size="{{ 14 }}" />
-              <text class="rate-text">{{item.rate}}</text>
+              <van-rate readonly value="{{(item.rating.average+2)/2+1}}" size="{{ 14 }}" />
+              <text class="rate-text">{{item.rating.average}}</text>
+               
             </view>
           </van-card>
-        </view>
+        
       </movable-view>
       <view class="line"></view>
     </movable-area>
+    </navigator>
     <view class="delete-btn" bindtap="delete" data-id="{{item._id}}" data-index="{{index}}">删除</view>
   </view>
   <view wx:if="{{bookList.length >= 10}}">
@@ -36,4 +39,4 @@
     <text>请扫码加书或下拉刷新</text>
   </view>
 </block>
-<navigator url="../scanCode/scanCode"><view class="classifybtn b">扫码</view></navigator>
+<view bindtap="scan" class="classifybtn b">扫码</view>

@@ -32,7 +32,7 @@
   border-bottom: 2rpx solid #E9E9E9;
   box-sizing: border-box;
   background: #fff;
-  z-index: 999;
+  
 }
 .item movable-area {
   height: 200rpx;
@@ -57,7 +57,7 @@
   top: 0;
   bottom: 0;
   right: 0; 
-  width: 200rpx;
+  width: 100rpx;
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #FFFFFF;
@@ -70,7 +70,7 @@
   position: fixed;
   right: 10px;
   bottom:50px;
-  z-index: 1;
+  z-index: 999;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -85,4 +85,95 @@
   border-top-color: yellow;
   border-bottom-color: green; 
   background-color: rgba(0,0,0,.5);
+}
+
+
+
+/**列表**/
+.ibox-list{  
+    
+  padding: 30rpx;     
+}
+.ibox-list-nav{ 
+  background: #fff;
+  position: relative
+}
+.ibox-list-nav view::after{
+  clear:both;
+  content:'.';
+  display:block;
+  width: 0;
+  height: 0;
+  visibility:hidden;
+}
+.ibox-list-img{
+  width: 105rpx;
+  height: 140rpx;
+  float: left;
+}
+.ibox-list-infos{
+  width: 550rpx;  
+  float: right;
+}
+
+.ibox-list-title{
+  font-size: 34rpx;
+  color: #2d2d2d;
+  display: block;
+  text-overflow: ellipsis;
+  margin-top: 4rpx;
+}
+.ibox-list-star{
+  margin:12rpx 0 14rpx;
+}
+
+
+.ibox-list-tags text{
+  position: relative;
+  font-size: 24rpx;
+  color: #ffac2d;
+  padding: 12rpx 16rpx;
+  display: inline-block;
+  margin-right: 14rpx;
+  margin-bottom: 10rpx;
+
+}
+
+.ibox-list-tags text::after {
+  content:" ";
+  width:200%;
+  height:200%;
+  position:absolute;
+  top:0;
+  left:0;
+  border:1px solid #ffac2d;
+  -webkit-transform:scale(0.5);
+  transform:scale(0.5);
+  -webkit-transform-origin:0 0;
+  transform-origin:0 0;
+  box-sizing:border-box;
+  border-radius:6px;
+
+}
+.widget-line {
+  content:" ";
+  position:absolute;
+  left:30rpx;
+  top:0;
+  right:30rpx;
+  height:1px; 
+  background-color:#F0F0F0;
+  -webkit-transform:scaleY(0.5);
+  transform:scaleY(0.5);
+
+}
+.star-img{
+  width: 130rpx;
+  height: 24rpx;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 5rpx;
+  
 }

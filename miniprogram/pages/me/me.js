@@ -1,6 +1,11 @@
 const app = getApp()
 const db = wx.cloud.database()
 const db_book = db.collection('mybooks')
+var star = require("../../utils/star");
+global.regeneratorRuntime = require('../../lib/regenerator/runtime-module')
+const { regeneratorRuntime } = global
+import Notify from '../../vant/notify/notify'
+
 let skip = 0,
   limit = 10
 Page({
@@ -8,6 +13,117 @@ Page({
     bookList: [],
     showMore: true
   },
+  onLaunch: function(){
+    var _this=this;
+    db.collection('mybooks').get({
+      success: res =>{
+        console.log(res.data[0]);
+       
+        this.setData({
+          bookList:res.data
+        })
+      } 
+    })
+  },
+  //扫码部分-------------------------------begin
+  onLoad: function() {
+    
+    if (!wx.cloud) {
+      console.log('未开启云开发')
+      return
+    }
+    wx.cloud.callFunction({
+      name: 'login',
+      complete: res => {
+        app.globalData.openid = res.result.openid
+        console.log('云函数获取到的openid: ', res.result.openid)
+      }
+    })
+  },
+  // 扫码
+  async scan() {
+    const isbn = await new Promise(function(resolve, reject) {
+      wx.scanCode({
+        scanType: ['barCode'],
+        success: function (res) {
+          resolve(res.result)
+        },
+        fail: function (err) {
+          reject(err)
+        }
+      })
+    })
+    console.log('扫码结果', isbn)
+    const isExist = await this.checkBook(isbn)
+    
+    if (isExist) {
+      Notify({
+        text: '图书已存在',
+        duration: 10000,
+        selector: '#custom-selector',
+        backgroundColor: 'red'
+      })
+      console.log("存在")
+      return
+    }
+    if (isExist==false) {
+      Notify({
+        text: '添加成功',
+        duration: 10000,
+        selector: '#custom-selector',
+        backgroundColor: 'green'
+      })
+      console.log("可添加")
+      
+    } // 已更新
+    console.log("添加中")
+    wx.cloud.callFunction({
+      name: 'bookinfo',
+      data: { isbn },
+      // data: { isbn: '9787101003048'},
+      success: res => {
+        console.log('res', res.result)
+        db_book.add({
+          data: Object.assign(res.result, {openids: [app.globalData.openid]})
+        }).then(res => {
+          Notify({
+            text: '添加成功',
+            duration: 10000,
+            selector: '#custom-selector',
+            backgroundColor: 'green'
+          })
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      fail: err => {
+        Notify({
+          text: '图书获取超时或不存在',
+          duration: 10000,
+          selector: '#custom-selector',
+          backgroundColor: 'red'
+        })
+      }
+    })
+  },
+
+  //扫码部分----------------------------------------end
+
+
+
+  // 根据isbn查询
+  async checkBook(isbn13) {
+    const bookResult = await db.collection('mybooks').where({isbn13}).get()
+    console.log('book', bookResult)
+    if (bookResult.data.length==0) {
+     
+      return false
+    }else{
+      return true
+    }
+  },
+
   async onLoad() {
     if (!app.globalData.openid) {
       wx.cloud.callFunction({
@@ -23,16 +139,6 @@ Page({
   },
   onShow() {
   
-  },
-  gotoDetail(e) {
-    const item = e.currentTarget.dataset.item
-    wx.navigateTo({
-      url: '../bookdetail/bookdetail',
-      success: function (res) {
-        // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('acceptDataFromOpenerPage', item)
-      }
-    })
   },
   // 显示删除按钮
   showDeleteButton(e) {
@@ -55,7 +161,7 @@ Page({
   // 处理movable-view移动事件
   handleMovableChange(e) {
     if (e.detail.source === 'friction') {
-      if (e.detail.x < -30) {
+      if (e.detail.x < -60) {
         this.showDeleteButton(e)
       } else {
         this.hideDeleteButton(e)
@@ -82,6 +188,7 @@ Page({
   // 左滑删除
   async delete(e) {
     const id = e.currentTarget.dataset.id
+    console.log(id)
     const index = e.currentTarget.dataset.index
     console.log(id, index)
     this.data.bookList.splice(index, 1)
@@ -90,13 +197,12 @@ Page({
     })
     const bookInfo = await db_book.doc(id).get()
     console.log(bookInfo.data)
-    let openids = bookInfo.data.openids
-    openids.splice(openids.findIndex(item => item === app.globalData.openid), 1)
-    db_book.doc(id).update({
-      data: {
-        openids
+    db.collection('mybooks').doc(id).remove({
+      success: function(res) {
+        console.log(res.data)
       }
     })
+    
   },
 
   async onPullDownRefresh() {
@@ -108,6 +214,15 @@ Page({
     wx.stopPullDownRefresh() // 处理真机不回弹
   },
   async loadData() {
+    var _this=this;
+    db.collection('mybooks').get({
+      success: res =>{
+       
+        this.setData({
+          bookList:res.data
+        })
+      } 
+    })
     const res = await db.collection('mybooks').skip(skip).limit(limit).where({
       openids: db.command.eq(app.globalData.openid)
     }).get()

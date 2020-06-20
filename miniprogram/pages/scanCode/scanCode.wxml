@@ -1,6 +1,0 @@
-<view class="container">
-  <view class='button'>
-    <van-button type="primary" bindtap="scanCode">扫图书码</van-button>
-  </view>
-</view>
-<van-notify id="custom-selector" />
