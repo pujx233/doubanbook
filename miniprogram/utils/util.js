@@ -16,7 +16,37 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+// 使用函数节流防止重复点击
+function throttle(fn, gapTime) {
+  if (gapTime == null || gapTime == undefined) {
+    gapTime = 1500
+  }
+  let _lastTime = null
+  // 返回新的函数
+  return function () {
+    let _nowTime = + new Date()
+    if (_nowTime - _lastTime > gapTime || !_lastTime) {
+      fn.apply(this, arguments)   //将this和参数传给原函数
+      _lastTime = _nowTime
+    }
+  }
+}
+
+function buttonClicked(self) {
+  self.setData({
+    buttonClicked: true
+  })
+  setTimeout(function () {
+    self.setData({
+      buttonClicked: false
+    })
+  }, 1000)
+}
+
+
 module.exports = {
-  formatTime: formatTime
+  buttonClicked:buttonClicked,
+  formatTime: formatTime,
+  throttle: throttle,
 }
 

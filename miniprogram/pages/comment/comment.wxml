@@ -1,26 +1,31 @@
-<view class=''>
-  <view class='detail-container' style='background: url({{detail.images.large}}) no-repeat  top/cover'></view>
-  <view class='detail-mask'></view>
-  <view class='detail-info'>
-    <image src="{{detail.images.large}}" class='detail-img'></image>
-    <view class='detail'>
-      <view class='detail-nm'>{{detail.title}}</view>
-      <view>{{detail.original_title}}</view>
-      <view class='detail.sc'>{{detail.rating.average}}分</view>
-      <view>{{detail.countries[0]}}</view>
-      <view>导演：{{detail.directors[0].name}}</view>
-    </view>
-  </view>
-  <view class='desc'>{{detail.summary}}</view>
-  <!-- 评价 -->
-  <view class="comment-container">
-    <van-field value="{{ content }}" placeholder="写一些评价吧" bind:change="onContentChange" />
-    <van-rate value="{{ score }}" bind:change="onScoreChange" />
-    <van-button type="warning" bindtap="uploadImg">上传图片</van-button>
-    <view>
-      <image class="comment-img" src="{{item}}" wx:for="{{images}}" wx:key="{{index}}"></image>
-    </view>
-    <van-button size="large" type="danger" bindtap="submit">提交评价</van-button>
-  </view>
+<view class="ibox-list">
+	<image class="ibox-list-img" src="{{detail.image}}"></image>
+	<view class="ibox-list-infos">
+		<view class="ibox-list-title">{{detail.title}}</view>
+		<view class="ibox-list-star">
+			<van-rate readonly value="{{(detail.rating.average)/2+1}}" size="{{ 14 }}" />
+			<text class="average-rating">{{detail.rating.average}}</text>
+		</view>
+		<view class="ibox-list-tags">
+			<!--<text wx:for="{{item.tags}}" wx:for-item="item"  >{{item.title}}</text>-->
+			<text wx:if="{{detail.tags[0].title}}">{{detail.tags[0].title}}</text>
+			<text wx:if="{{detail.tags[1].title}}">{{detail.tags[1].title}}</text>
+			<text wx:if="{{detail.tags[2].title}}">{{detail.tags[2].title}}</text>
+		</view>
+		<view class="ibox-list-author">作者：{{detail.author[0]}}</view>
 
+
+	</view>
 </view>
+
+<!-- 评价 -->
+<view class="comment-container">
+	<van-field type="textarea" autosize="30" value="{{ content }}" placeholder="写一些评价吧" bind:change="onContentChange" />
+	<view class = "star">
+    <van-rate size="{{ 60 }}" value="{{ score }}" bind:change="onScoreChange" />
+ 
+		<image class="comment-img" src="{{item}}" wx:for="{{images}}" wx:key="{{index}}"></image>
+	</view>
+	<van-button size="large" type="danger" bindtap="submit">提交评价</van-button>
+</view>
+<navigator url="../commentdetail/commentdetail?id={{detail.id}}"><view class="classifybtn b">详情</view></navigator>

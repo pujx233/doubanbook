@@ -4,7 +4,7 @@ const db_book = db.collection('mybooks')
 var star = require("../../utils/star");
 global.regeneratorRuntime = require('../../lib/regenerator/runtime-module')
 const { regeneratorRuntime } = global
-import Notify from '../../vant/notify/notify'
+import Notify from '../../miniprogram_npm/vant-weapp/notify/notify'
 
 let skip = 0,
   limit = 10
@@ -61,9 +61,17 @@ Page({
         text: '图书已存在',
         duration: 10000,
         selector: '#custom-selector',
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        context:this
       })
       console.log("存在")
+      wx.showLoading({
+        title: '已收藏',
+        mask:true,
+        });
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       return
     }
     if (isExist==false) {
@@ -71,10 +79,17 @@ Page({
         text: '添加成功',
         duration: 10000,
         selector: '#custom-selector',
-        backgroundColor: 'green'
+        backgroundColor: 'green',
+        context:this
       })
       console.log("可添加")
-      
+    wx.showLoading({
+      title: '已收藏',
+      mask:true,
+      });
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)  
     } // 已更新
     console.log("添加中")
     wx.cloud.callFunction({

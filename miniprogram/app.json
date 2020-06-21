@@ -6,7 +6,8 @@
     "pages/me/me",
     "pages/detail/detail",
     "pages/search/search",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/commentdetail/commentdetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -40,6 +41,12 @@
         "selectedIconPath": "images/nav_about_on.png"
       }
     ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,7 +1,7 @@
 // pages/rank/rank.js
 // 获取全局应用程序实例对象
 const app = getApp()
-var jsonData =  require('../../data/data.js');
+var jsonData =  require('../../data/top250.js');
 const request=require("../../utils/requests");
 
 

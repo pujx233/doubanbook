@@ -1,0 +1,19 @@
+.text{
+  text-align: center;
+  font-size: 40rpx;
+}
+.item {
+  position: relative;
+  width: 100vw;
+  border-bottom: 2rpx solid #E9E9E9;
+  box-sizing: border-box;
+  background: #fff;
+  
+}
+.rate {
+  display: flex;
+}
+
+.rate-text {
+  font-size: 24rpx;
+}

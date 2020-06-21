@@ -16,7 +16,7 @@
 
 .detail-img {
   width: 280rpx;
-  height: 90%;
+  height: 210%;
   margin-right: 24rpx;
 }
 
@@ -59,18 +59,23 @@
 
 .comment-container {
   padding: 0 20rpx;
+ 
+  
 }
 
 .comment {
   padding: 10rpx;
+  height: 100rpx;
+  line-height: 100rpx;
 }
 
 .comment-content {
-  border: 1px solid #ccc;
+  border: 4rpx solid #ccc;
   width: 100%;
   box-sizing: border-box;
   font-size: 32rpx;
   border-radius: 8rpx;
+  line-height: 100rpx;
   padding: 20rpx;
 }
 
@@ -84,4 +89,126 @@
   width: 200rpx;
   height: 200rpx;
   margin: 20rpx 20rpx 0 0;
+}
+/**列表**/
+.ibox-list{  
+    
+  padding: 30rpx; 
+  height: 400rpx;    
+}
+.ibox-list-nav{ 
+  background: #fff;
+  position: relative
+}
+.ibox-list-nav view::after{
+  clear:both;
+  content:'.';
+  display:block;
+  width: 0;
+  height: 0;
+  visibility:hidden;
+}
+.ibox-list-img{
+  width: 210rpx;
+  height: 280rpx;
+  float: left;
+}
+.ibox-list-infos{
+  width: 450rpx;  
+  float: right;
+}
+.ibox-list-author{
+  font-size: 28rpx;
+  color: #656565;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 38rpx;
+  margin-bottom: 6rpx;
+}
+.ibox-list-title{
+  font-size: 34rpx;
+  color: #2d2d2d;
+  display: block;
+  text-overflow: ellipsis;
+  margin-top: 4rpx;
+}
+.ibox-list-star{
+  margin:12rpx 0 14rpx;
+}
+
+
+.ibox-list-tags text{
+  position: relative;
+  font-size: 24rpx;
+  color: #ffac2d;
+  padding: 12rpx 16rpx;
+  display: inline-block;
+  margin-right: 14rpx;
+  margin-bottom: 10rpx;
+
+}
+
+.ibox-list-tags text::after {
+  content:" ";
+  width:200%;
+  height:200%;
+  position:absolute;
+  top:0;
+  left:0;
+  border:1px solid #ffac2d;
+  -webkit-transform:scale(0.5);
+  transform:scale(0.5);
+  -webkit-transform-origin:0 0;
+  transform-origin:0 0;
+  box-sizing:border-box;
+  border-radius:6px;
+
+}
+
+.ibox-list-summary{
+  font-size: 28rpx;
+  color: #656565;
+  word-break:break-all;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  line-height: 38rpx
+}
+.widget-line {
+  content:" ";
+  position:absolute;
+  left:30rpx;
+  top:0;
+  right:30rpx;
+  height:1px; 
+  background-color:#F0F0F0;
+  -webkit-transform:scaleY(0.5);
+  transform:scaleY(0.5);
+
+}
+.star{
+  margin-left: 45rpx;
+
+}
+.classifybtn{
+  position: fixed;
+  right: 10px;
+  bottom:50px;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #666;
+  text-align: center;
+  line-height: 50px;
+  font-size: .8rem;
+  color: #fff;
+  border:5px solid;
+  border-left-color:#ff851b;
+  border-right-color: #0074d9;
+  border-top-color: yellow;
+  border-bottom-color: green; 
+  background-color: rgba(0,0,0,.5);
 }

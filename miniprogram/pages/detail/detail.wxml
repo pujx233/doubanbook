@@ -33,7 +33,9 @@
             </view>
         </view>
     </scroll-view>
+    <navigator url = "../comment/comment?id={{bookInfo.id}}">
+        <image class="com" src="../../images/comment.png"></image>
+    </navigator>
 </view>
 <view bindtap="collect" data-id="{{bookInfo.isbn13}}" class="classifybtn b"></view>
-
 <image class="col" src="../../images/col.jpg"></image>

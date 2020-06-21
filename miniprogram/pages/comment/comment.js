@@ -1,18 +1,52 @@
-// pages/comment/comment.js
-const db = wx.cloud.database(); // 初始化数据库
+const app = getApp()
+const db = wx.cloud.database()
+const db_book = db.collection('mybooks')
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id:"",
     detail: {},
     content: '', // 评价的内容
     score: 5, // 评价的分数
     images: [], // 上传的图片
     fileIds: [],
-    movieId: -1
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    
+    this.setData({
+      id: options.id
+    });
+    console.log("进度")
+    wx.showLoading({
+      title: '加载中',
+    })
+    console.log(options);
+    wx.cloud.callFunction({
+      name: 'getDetail',
+      data: {
+        id: options.id
+      }
+    }).then(res => {
+      console.log(res);
+      this.setData({
+        detail: res.result
+      });
+      wx.hideLoading();
+    }).catch(err => {
+      console.error(err);
+      wx.hideLoading();
+    });
+  },
+
   submit: function() {
     wx.showLoading({
       title: '评论中',
@@ -47,7 +81,7 @@ Page({
         data: {
           content: this.data.content,
           score: this.data.score,
-          movieid: this.data.movieId,
+          id:this.data.id,
           fileIds: this.data.fileIds
         }
       }).then(res=>{
@@ -66,9 +100,12 @@ Page({
 
   },
   onContentChange: function(event) {
+    console.log(event.detail)
     this.setData({
       content: event.detail
     });
+    
+    
   },
 
   onScoreChange: function(event) {
@@ -94,33 +131,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    this.setData({
-      movieId: options.movieid
-    });
-    wx.showLoading({
-      title: '加载中',
-    })
-    console.log(options);
-    wx.cloud.callFunction({
-      name: 'getDetail',
-      data: {
-        movieid: options.movieid
-      }
-    }).then(res => {
-      // console.log(res);
-      this.setData({
-        detail: JSON.parse(res.result)
-      });
-      wx.hideLoading();
-    }).catch(err => {
-      console.error(err);
-      wx.hideLoading();
-    });
-  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

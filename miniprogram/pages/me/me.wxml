@@ -7,7 +7,7 @@
           bindtouchend="handleTouchEnd"
           bindchange="handleMovableChange">
         
-          <van-card price="{{item.price}}" desc="{{item.author}} / {{item.publisher}}" title="{{item.title}}" thumb="{{item.image}}">
+          <van-card  desc="{{item.author}} / {{item.publisher}}" title="{{item.title}}" thumb="{{item.image}}">
             <view slot="tags" class="rate">
               <van-rate readonly value="{{(item.rating.average+2)/2+1}}" size="{{ 14 }}" />
               <text class="rate-text">{{item.rating.average}}</text>

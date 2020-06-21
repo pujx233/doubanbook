@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "历史评论",
+  
+    "usingComponents": {
+      "van-card": "../../miniprogram_npm/vant-weapp/card",
+      "van-tag": "../../miniprogram_npm/vant-weapp/tag",
+      "van-rate": "../../miniprogram_npm/vant-weapp/rate"
+    },
+  
+  "enablePullDownRefresh": true
+}

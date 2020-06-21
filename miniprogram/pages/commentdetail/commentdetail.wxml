@@ -1,0 +1,19 @@
+<!--miniprogram/pages/commentdetail/commentdetail.wxml-->
+
+<block wx:if="{{dataList.length > 0}}">
+	<view class="item" wx:for="{{dataList}}" wx:key="_id">
+
+		<van-card desc="{{item.content}}">
+			<view slot="tags" class="rate">
+				<van-rate readonly value="{{item.score}}" size="{{ 14 }}" />
+				<text class="rate-text">{{item.score}}</text>
+			</view>
+			
+		</van-card>
+	</view>
+
+</block>
+<block wx:else>
+	<view class="text">本图书还没有评论哦</view>
+
+</block>

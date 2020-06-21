@@ -2,6 +2,14 @@
 App({
    
   onLaunch: function () {
+    var storageData = wx.getStorageSync('postList');
+    if (!storageData) {
+      var dataObj = require("data/data.js")
+      wx.clearStorageSync();
+      wx.setStorageSync('postList', dataObj.postList);
+    }
+    this._getUserInfo();
+    // wx.login();
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

@@ -4,15 +4,15 @@ var star = require("../../utils/star");
 const app = getApp()
 const db = wx.cloud.database()
 const db_book = db.collection('mybooks')
-var star = require("../../utils/star");
 global.regeneratorRuntime = require('../../lib/regenerator/runtime-module')
 const { regeneratorRuntime } = global
-import Notify from '../../vant/notify/notify'
+import Notify from '../../miniprogram_npm/vant-weapp/notify/notify'
 
 Page({
   data:{
       id:"",
-      isbn:""
+      isbn:"",
+      buttonClicked: false
   },
   onLoad:function(options){
       // 页面初始化 options为页面跳转所带来的参数
@@ -21,7 +21,7 @@ Page({
       wx.showToast({
           title: '加载中',
           icon: 'loading',
-          duration: 10000
+          duration: 3000
       })
       request.getBookById(that.data.id,function(res){
           
@@ -53,19 +53,30 @@ Page({
     // 页面关闭
   },
   async collect(e) {
+    
     console.log(e.currentTarget.dataset.id)
     const isbn = e.currentTarget.dataset.id
     console.log('isbn', isbn)
     const isExist = await this.checkBook(isbn)
     
     if (isExist) {
+      wx.showLoading({
+        title: '已收藏',
+        mask:true,
+        });
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+        
       Notify({
         text: '图书已存在',
         duration: 10000,
         selector: '#custom-selector',
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        context:this
       })
       console.log("存在")
+     
       return
     }
     if (isExist==false) {
@@ -73,13 +84,23 @@ Page({
         text: '添加成功',
         duration: 10000,
         selector: '#custom-selector',
-        backgroundColor: 'green'
+        backgroundColor: 'green',
+        context:this
       })
-      console.log("可添加")
+      
       
     } // 已更新
-    console.log("添加中")
+    
+    wx.showLoading({
+      title: '收藏中', 
+      mask:true,   
+      });
+      setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
+    console.log("添加中",isbn),
     wx.cloud.callFunction({
+      
       name: 'bookinfo',
       data: { isbn },
       // data: { isbn: '9787101003048'},
@@ -89,6 +110,7 @@ Page({
           data: Object.assign(res.result, {openids: [app.globalData.openid]})
         }).then(res => {
           console.log("添加成功",res)
+          wx.hideLoading();
         }).catch(err => {
           console.log(err)
         })
