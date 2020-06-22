@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText":"评论",
+  "navigationBarTitleText":"提交评论",
   "usingComponents": {
     "van-field": "../../miniprogram_npm/vant-weapp/field",
     "van-rate": "../../miniprogram_npm/vant-weapp/rate",

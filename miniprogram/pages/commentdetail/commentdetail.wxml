@@ -14,6 +14,5 @@
 
 </block>
 <block wx:else>
-	<view class="text">本图书还没有评论哦</view>
-
+	<image class = "image" src="../../images/end.jpg"></image>
 </block>

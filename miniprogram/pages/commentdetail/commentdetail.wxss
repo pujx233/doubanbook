@@ -1,3 +1,6 @@
+Page{
+  background-color: rgb(255, 255, 255);
+}
 .text{
   text-align: center;
   font-size: 40rpx;
@@ -16,4 +19,10 @@
 
 .rate-text {
   font-size: 24rpx;
+}
+.image{
+  width:750rpx;
+  height:150rpx;
+  border-radius: 60%;
+  box-shadow: 0 0 30px rgb(255, 255, 255);
 }
