@@ -1,0 +1,15 @@
+var subString = function(string, start, end){
+  if (string){
+    return string.substring(start, end);
+  }
+  return "";
+}
+
+var concat = function(string, another){
+  return string.concat(another);
+}
+
+module.exports = {
+  subString: subString,
+  concat: concat
+}

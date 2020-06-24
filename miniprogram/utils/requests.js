@@ -20,7 +20,7 @@ function searchBook(data, successCb, errorCb, completeCb) {
 }
 //获取图书详细信息
 function getBookById(id, successCb, errorCb, completeCb) {
-    request(api.getBookById+id, "", successCb, errorCb, completeCb);
+    request(api.getBookById.replace(':id', id), "", successCb, errorCb, completeCb);
 }
 //获取丛书列表
 function getBookList(id, data, successCb, errorCb, completeCb) {

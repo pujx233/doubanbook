@@ -498,7 +498,7 @@ page{
 }
 /*搜索*/
 .search-bg{
-  position: fixed;
+  /* position: fixed; */
   height: 156rpx;
   left:0;
   top:0;

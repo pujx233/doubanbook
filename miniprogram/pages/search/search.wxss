@@ -1,11 +1,19 @@
-/* pages/search/search.wxss */
-.wrapper-scroll {
+wrapper-scroll {
   position:fixed;
   left:0;
   right:0;
   top:0;
   bottom:0;
   overflow:auto
+}
+
+.container{
+  padding: 0 0 100rpx;
+  font-size: 29rpx;
+  display: flex;
+  overflow: scroll;
+  flex-wrap: wrap;
+  border: #fff;
 }
 
 .banner-box{
@@ -19,12 +27,14 @@
   height: 400rpx;
   background: #ffac2d    
 }
+
 .slide-image{
    width: 100%;
    height: 100%
 }
+
 .search-box{
-  position: absolute;
+  position: relative;
   z-index: 2;
   width: 690rpx;
   height: 80rpx;
@@ -49,12 +59,10 @@
 }
 .search-icon image{ 
   width: 40rpx;
-  height: 40rpx;
-
-  
+  height: 40rpx;  
 }
 .search-input{
-  width: 480rpx;
+  width: 448rpx;
   height: 80rpx;
   color: #989898;
   font-size: 30rpx;
@@ -74,15 +82,87 @@
   text-align: center
 
 }
+
+.clear-icon{
+  width: 28rpx;
+  margin: 20rpx 5rpx 20rpx 0rpx;
+  padding-top: 6rpx;
+  color: rgb(186, 186, 186);
+}
+
+.search_history_title{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40rpx 20rpx 40rpx 30rpx;
+  font-size: 29rpx;
+  z-index: 1;
+}
+
 .logo {
+  width: 100%;
   text-align: center;
-  padding-top: 200rpx;
+  padding-top: 44rpx;
   font-size: 40rpx;
   font-weight: bold;
   color: #aaa;
+  border: #fff;
 }
 
 .logo image {
   width: 250rpx;
   height: 250rpx;
+}
+
+.list{
+  padding-left: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.no_history{
+  width: 100%;
+  align-items: center;
+  font-size: 25rpx;
+}
+
+.key{
+  display: flex;
+  width: auto;
+  height: 58rpx;
+  line-height: 48rpx;
+  background: rgb(185, 185, 185);
+  border-radius: 8%;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 25rpx;
+  color: #4A4A4A;
+  /* float: left; */
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+  flex-wrap: nowrap;
+}
+
+.key-text{
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+}
+
+.belowSearchBox{
+  width: 100%;
+}
+
+.clear-icon-container{
+  right: 100%;
+  width: 30rpx;
+  overflow: visible;
+  display: flex;
+}
+
+.clear-one{
+  position: relative;
+  left: 20rpx;
+  bottom: 20rpx;
 }

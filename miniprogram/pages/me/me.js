@@ -14,16 +14,7 @@ Page({
     showMore: true
   },
   onLaunch: function(){
-    var _this=this;
-    db.collection('mybooks').get({
-      success: res =>{
-        console.log(res.data[0]);
-       
-        this.setData({
-          bookList:res.data
-        })
-      } 
-    })
+    
   },
   //扫码部分-------------------------------begin
   onLoad: function() {
@@ -229,15 +220,7 @@ Page({
     wx.stopPullDownRefresh() // 处理真机不回弹
   },
   async loadData() {
-    var _this=this;
-    db.collection('mybooks').get({
-      success: res =>{
-       
-        this.setData({
-          bookList:res.data
-        })
-      } 
-    })
+    
     const res = await db.collection('mybooks').skip(skip).limit(limit).where({
       openids: db.command.eq(app.globalData.openid)
     }).get()
